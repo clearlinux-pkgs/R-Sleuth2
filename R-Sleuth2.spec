@@ -4,36 +4,35 @@
 #
 Name     : R-Sleuth2
 Version  : 2.0.5
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/Sleuth2_2.0-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Sleuth2_2.0-5.tar.gz
 Summary  : Data Sets from Ramsey and Schafer's "Statistical Sleuth (2nd
 Group    : Development/Tools
 License  : GPL-2.0+
-BuildRequires : R-highr
 BuildRequires : buildreq-R
-BuildRequires : texlive
 
 %description
 No detailed description available
 
 %prep
 %setup -q -c -n Sleuth2
+cd %{_builddir}/Sleuth2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552940736
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1589526128
 
 %install
-export SOURCE_DATE_EPOCH=1552940736
+export SOURCE_DATE_EPOCH=1589526128
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -59,12 +58,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  Sleuth2 || :
+R CMD check --no-manual --no-examples --no-codoc Sleuth2 || :
 
 
 %files
