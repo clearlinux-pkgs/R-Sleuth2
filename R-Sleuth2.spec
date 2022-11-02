@@ -4,7 +4,7 @@
 #
 Name     : R-Sleuth2
 Version  : 2.0.5
-Release  : 42
+Release  : 43
 URL      : https://cran.r-project.org/src/contrib/Sleuth2_2.0-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Sleuth2_2.0-5.tar.gz
 Summary  : Data Sets from Ramsey and Schafer's "Statistical Sleuth (2nd
